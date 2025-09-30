@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الذكاء الاصطناعي: المميزات والمخاطر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* التنسيقات العامة */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent1: #2ecc71;
+            --accent2: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الشريط العلوي */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* المحتوى الرئيسي */
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent1);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+        
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            background: var(--secondary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .source {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .source:hover {
+            text-decoration: underline;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin: 1rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .benefit-card {
+            border-left: 5px solid var(--accent1);
+        }
+        
+        .risk-card {
+            border-left: 5px solid var(--accent2);
+        }
+        
+        .ethics-card {
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .future-card {
+            border-left: 5px solid #9b59b6;
+        }
+        
+        .blog-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        
+        .resource-list li {
+            margin-bottom: 1rem;
+            break-inside: avoid;
+        }
+        
+        .resource-list a {
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .resource-list i {
+            margin-left: 10px;
+            color: var(--primary);
+        }
+        
+        /* التذييل */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 992px) {
+            .resource-list {
+                columns: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>الذكاء الاصطناعي</span>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#what-is-ai">ما هو الذكاء الاصطناعي</a></li>
+                    <li><a href="#benefits">المميزات</a></li>
+                    <li><a href="#risks">المخاطر</a></li>
+                    <li><a href="#ethics">الأخلاقيات</a></li>
+                    <li><a href="#future">المستقبل</a></li>
+                    <li><a href="#resources">المصادر</a></li>
+                    <li><a href="#blog">المدونة</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>الذكاء الاصطناعي: بين الفرص والتحديات</h1>
+                <p>استكشف معنا الثورة التقنية التي تغير عالمنا، من خلال تحليل متوازن لمميزات الذكاء الاصطناعي ومخاطره، معتمدين على أحدث المصادر والدراسات الموثوقة.</p>
+                <a href="#what-is-ai" class="btn">ابدأ الرحلة</a>
+            </div>
+        </section>
+
+        <!-- إحصاءات -->
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">37%</span>
+                    <span class="stat-label">نمو سوق الذكاء الاصطناعي سنوياً</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">85M</span>
+                    <span class="stat-label">وظيفة قد تستبدل بالذكاء الاصطناعي بحلول 2026</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">97M</span>
+                    <span class="stat-label">وظيفة جديدة قد يخلقها الذكاء الاصطناعي</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- مقدمة عن الذكاء الاصطناعي -->
+        <section id="what-is-ai" class="section">
+            <div class="container">
+                <h2 class="section-title">ما هو الذكاء الاصطناعي؟</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الذكاء الاصطناعي (AI)</h3>
+                            <p>هو محاكاة عمليات الذكاء البشري في الآلات المبرمجة للتفكير مثل البشر وتقليد أفعالهم. يمكن أن يشير المصطلح أيضًا إلى أي آلة تظهر سمات مرتبطة بالعقل البشري مثل التعلم وحل المشكلات.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>التعلم الآلي (Machine Learning)</h3>
+                            <p>هو فرع من فروع الذكاء الاصطناعي يركز على استخدام البيانات والخوارزميات لمحاكاة طريقة تعلم البشر، وتحسين دقتها تدريجيًا مع تزويدها بمزيد من البيانات.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>التعلم العميق (Deep Learning)</h3>
+                            <p>هو نوع من التعلم الآلي يستخدم شبكات عصبية ذات طبقات متعددة (ومن هنا جاءت تسميته "عميق") لمعالجة البيانات واستخلاص الأنماط المعقدة منها.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="card-content">
+                        <h3>أمثلة من الحياة اليومية</h3>
+                        <p>نواجه الذكاء الاصطناعي يوميًا في العديد من التطبيقات:</p>
+                        <ul style="margin-top: 1rem; padding-right: 1.5rem;">
+                            <li style="margin-bottom: 0.5rem;">المساعدات الصوتية مثل Siri وGoogle Assistant</li>
+                            <li style="margin-bottom: 0.5rem;">أنظمة التوصية في Netflix وYouTube وAmazon</li>
+                            <li style="margin-bottom: 0.5rem;">السيارات ذاتية القيادة</li>
+                            <li style="margin-bottom: 0.5rem;">مرشحات البريد المزعج في البريد الإلكتروني</li>
+                            <li style="margin-bottom: 0.5rem;">أنظمة التعرف على الوجه في الهواتف</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- مميزات الذكاء الاصطناعي -->
+        <section id="benefits" class="section" style="background-color: #f0f7ff;">
+            <div class="container">
+                <h2 class="section-title">مميزات الذكاء الاصطناعي</h2>
+                <div class="card-grid">
+                    <div class="card benefit-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الرعاية الصحية</h3>
+                            <p>تشخيص الأمراض (مثل السرطان) بدقة أعلى من بعض الأطباء البشر، تسريع اكتشاف الأدوية، العمليات الجراحية بمساعدة الروبوتات.</p>
+                            <a href="https://www.nature.com/articles/s41591-019-0647-4" class="source" target="_blank">Nature Medicine: دراسة عن نموذج ذكاء اصطناعي يتفوق في تشخيص سرطان الثدي</a>
+                            <a href="https://news.mit.edu/2020/ai-molecule-drug-discovery-1026" class="source" target="_blank">MIT News: بحث حول استخدام الذكاء الاصطناعي للتنبؤ بتركيبة الجزيئات</a>
+                        </div>
+                    </div>
+                    <div class="card benefit-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الكفاءة والأتمتة</h3>
+                            <p>أتمتة المهام المتكررة والمملة في المصانع والمكاتب، مما يزيد الإنتاجية ويقلل الأخطاء البشرية.</p>
+                            <a href="https://www.mckinsey.com/featured-insights/artificial-intelligence" class="source" target="_blank">McKinsey & Company: تقارير عن تأثير الأتمتة على الإنتاجية</a>
+                            <a href="https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-analysis-sizing-the-prize-report.pdf" class="source" target="_blank">PwC: تقرير حول تعزيز الناتج المحلي الإجمالي العالمي</a>
+                        </div>
+                    </div>
+                    <div class="card benefit-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>التجربة الشخصية</h3>
+                            <p>التوصيات المخصصة في التسوق (أمازون) والتسلية (سبوتيفاي، يوتيوب)، المساعدات الشخصية (Siri، Google Assistant).</p>
+                            <a href="https://www.amazon.science" class="source" target="_blank">Amazon Science: مدونة عن أنظمة التوصية</a>
+                            <a href="https://netflixtechblog.com" class="source" target="_blank">Netflix Tech Blog: كيف يستخدم نتفلكس الذكاء الاصطناعي</a>
+                        </div>
+                    </div>
+                    <div class="card benefit-card">
+                        <div class="card-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الابتكار العلمي</h3>
+                            <p>المساعدة في حل مشكلات معقدة مثل التغير المناخي (نمذجة المناخ)، واكتشاف مواد جديدة.</p>
+                            <a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology" class="source" target="_blank">DeepMind (AlphaFold): ثورة في علم الأحياء</a>
+                            <a href="https://www.nasa.gov/feature/goddard/2021/nasa-uses-ai-to-track-greenland-s-ice-sheet-melt" class="source" target="_blank">NASA: استخدام الذكاء الاصطناعي لتحليل بيانات الأقمار الصناعية</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- مخاطر الذكاء الاصطناعي -->
+        <section id="risks" class="section">
+            <div class="container">
+                <h2 class="section-title">مخاطر وتحديات الذكاء الاصطناعي</h2>
+                <div class="card-grid">
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>التحيز والخوارزميات غير العادلة</h3>
+                            <p>أنظمة الذكاء الاصطناعي تتعلم من البيانات، وإذا كانت البيانات متحيزة ضد فئة معينة (على أساس العرق أو الجنس)، فستنتج قرارات متحيزة (في التوظيف، القروض، النظام القضائي).</p>
+                            <a href="https://www.media.mit.edu/projects/gender-shades/overview/" class="source" target="_blank">MIT Media Lab: دراسة عن تحيز أنظمة التعرف على الوجوه</a>
+                            <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" class="source" target="_blank">ProPublica: تحقيق عن تحيز خوارزمية "COMPAS"</a>
+                        </div>
+                    </div>
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الخصوصية والمراقبة</h3>
+                            <p>قدرة أنظمة التعرف على الوجوه وتحليل البيانات على إنشاء مجتمع مراقبة شاملة، وتتبع تحركات الأفراد دون موافقتهم.</p>
+                            <a href="https://www.aclu.org/issues/privacy-technology/surveillance-technologies/face-recognition-technology" class="source" target="_blank">ACLU: تقارير عن مخاطر المراقبة الجماعية</a>
+                            <a href="https://www.nytimes.com/2020/01/18/technology/clearview-ai-facial-recognition.html" class="source" target="_blank">The New York Times: مقالات عن استخدام الحكومات للتقنيات</a>
+                        </div>
+                    </div>
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users-slash"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>البطالة الهيكلية</h3>
+                            <p>خوف من استبدال الوظائف الروتينية واليدوية والذهنية جزئياً بالآلات، مما يتطلب إعادة تأهيل كبير للقوى العاملة.</p>
+                            <a href="https://www.weforum.org/reports/the-future-of-jobs-report-2020" class="source" target="_blank">World Economic Forum: تقرير "مستقبل الوظائف"</a>
+                            <a href="https://www.oxfordeconomics.com/publication/how-robots-change-the-world/" class="source" target="_blank">Oxford Economics: دراسة عن الروبوتات والعمالة البشرية</a>
+                        </div>
+                    </div>
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>مشكلة "الصندوق الأسود"</h3>
+                            <p>صعوبة فهم كيف تتخذ بعض نماذج الذكاء الاصطناعي المعقدة (خاصة الشبكات العصبية) قراراتها، مما يشكل خطراً في المجالات الحساسة مثل الطب والتمويل.</p>
+                            <a href="https://distill.pub/2017/feature-visualization/" class="source" target="_blank">Distill.pub: مقالة عن صعوبة فهم الشبكات العصبية</a>
+                            <a href="https://www.darpa.mil/program/explainable-artificial-intelligence" class="source" target="_blank">DARPA: مبادرة "XAI" (الذكاء الاصطناعي القابل للتفسير)</a>
+                        </div>
+                    </div>
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الأمن والاستخدام الخبيث</h3>
+                            <p>استخدام الذكاء الاصطناعي في إنشاء فيديوهات "الديب فيك" للتضليل، أو في الهجمات الإلكترونية الآلية، أو في تطوير أسلحة ذاتية مستقلة.</p>
+                            <a href="https://openai.com/blog/forecasting-misuse/" class="source" target="_blank">OpenAI: أبحاث حول إساءة استخدام الذكاء الاصطناعي</a>
+                            <a href="https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them" class="source" target="_blank">The Guardian: مقالات عن مخاطر فيديوهات "الديب فيك"</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الأخلاقيات والتنظيم -->
+        <section id="ethics" class="section" style="background-color: #f0f7ff;">
+            <div class="container">
+                <h2 class="section-title">الأخلاقيات والتنظيم</h2>
+                <div class="card-grid">
+                    <div class="card ethics-card">
+                        <div class="card-content">
+                            <h3>أهمية الأطر الأخلاقية</h3>
+                            <p>مع تطور الذكاء الاصطناعي وتغلغله في مختلف مناحي الحياة، أصبح من الضروري وضع أطر أخلاقية تضمن استخدامه بشكل مسؤول يحترم حقوق الإنسان والقيم الأساسية.</p>
+                            <p>تشمل هذه الأطر مبادئ مثل الشفافية، المساءلة، العدالة، الخصوصية، وعدم التمييز.</p>
+                        </div>
+                    </div>
+                    <div class="card ethics-card">
+                        <div class="card-content">
+                            <h3>المبادرات العالمية</h3>
+                            <ul style="margin-top: 1rem; padding-right: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;"><strong>مبادرة الذكاء الاصطناعي المسؤول من Microsoft:</strong> تركز على تطوير ذكاء اصطناعي يخدم البشرية جمعاء.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>لوائح الاتحاد الأوروبي للذكاء الاصطناعي:</strong> أول إطار قانوني شامل للذكاء الاصطناعي يركز على تقييم المخاطر.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>مبادرة الذكاء الاصطناعي من UNESCO:</strong> تهدف إلى تطوير إطار أخلاقي عالمي للذكاء الاصطناعي.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>مبادرة الذكاء الاصطناعي من OECD:</strong> تضع مبادئ لذكاء اصطناعي مبتكر وموثوق يحترم القيم الإنسانية.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- المستقبل مع الذكاء الاصطناعي -->
+        <section id="future" class="section">
+            <div class="container">
+                <h2 class="section-title">المستقبل مع الذكاء الاصطناعي</h2>
+                <div class="card-grid">
+                    <div class="card future-card">
+                        <div class="card-content">
+                            <h3>تأثير الذكاء الاصطناعي على الوظائف والمجتمع</h3>
+                            <p>من المتوقع أن يستمر الذكاء الاصطناعي في تغيير طبيعة العمل، حيث ستحل الآلات محل بعض الوظائف الروتينية، بينما ستظهر وظائف جديدة تتطلب مهارات مختلفة.</p>
+                            <p>سيؤثر الذكاء الاصطناعي أيضًا على كيفية تفاعلنا مع التكنولوجيا، وستصبح الأنظمة الذكية جزءًا لا يتجزأ من حياتنا اليومية، من المنازل الذكية إلى وسائل النقل الذاتية القيادة.</p>
+                        </div>
+                    </div>
+                    <div class="card future-card">
+                        <div class="card-content">
+                            <h3>المواطنة الرقمية والاستعداد للمستقبل</h3>
+                            <p>مع تزايد تأثير الذكاء الاصطناعي، تصبح "المواطنة الرقمية" أكثر أهمية من أي وقت مضى. وهذا يعني:</p>
+                            <ul style="margin-top: 1rem; padding-right: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">فهم أساسيات كيفية عمل الذكاء الاصطناعي</li>
+                                <li style="margin-bottom: 0.5rem;">الوعي بتأثيراته الاجتماعية والأخلاقية</li>
+                                <li style="margin-bottom: 0.5rem;">تطوير مهارات جديدة تتلاءم مع اقتصاد الذكاء الاصطناعي</li>
+                                <li style="margin-bottom: 0.5rem;">المشاركة في النقاشات العامة حول تنظيم الذكاء الاصطناعي</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- المصادر والمراجع -->
+        <section id="resources" class="section" style="background-color: #f0f7ff;">
+            <div class="container">
+                <h2 class="section-title">المصادر والمراجع</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>المراجع الأكاديمية والبحثية</h3>
+                        <ul class="resource-list">
+                            <li><a href="https://arxiv.org/" target="_blank"><i class="fas fa-external-link-alt"></i> arXiv.org: أرشيف لأحدث الأوراق البحثية</a></li>
+                            <li><a href="https://www.nature.com/natmachintell/" target="_blank"><i class="fas fa-external-link-alt"></i> Nature Machine Intelligence: مجلة متخصصة</a></li>
+                            <li><a href="https://www.technologyreview.com/" target="_blank"><i class="fas fa-external-link-alt"></i> MIT Technology Review: تغطية رصينة</a></li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 2rem;">المنظمات والمبادرات</h3>
+                        <ul class="resource-list">
+                            <li><a href="https://ainowinstitute.org/" target="_blank"><i class="fas fa-external-link-alt"></i> The AI Now Institute (NYU): الآثار الاجتماعية</a></li>
+                            <li><a href="https://www.partnershiponai.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Partnership on AI: تحالف بين كبرى الشركات</a></li>
+                            <li><a href="https://futureoflife.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Future of Life Institute: المخاطر الوجودية</a></li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 2rem;">المصادر الإخبارية</h3>
+                        <ul class="resource-list">
+                            <li><a href="https://www.wired.com/category/artificial-intelligence/" target="_blank"><i class="fas fa-external-link-alt"></i> Wired (قسم الذكاء الاصطناعي)</a></li>
+                            <li><a href="https://venturebeat.com/ai/" target="_blank"><i class="fas fa-external-link-alt"></i> VentureBeat (AI)</a></li>
+                            <li><a href="https://www.theverge.com/ai-artificial-intelligence" target="_blank"><i class="fas fa-external-link-alt"></i> The Verge (AI)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- المدونة -->
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">المدونة</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">مقالات دورية عن آخر التطورات في مجال الذكاء الاصطناعي</p>
+                
+                <div class="blog-preview">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="الذكاء الاصطناعي في الرعاية الصحية">
+                        <div class="blog-content">
+                            <div class="blog-date">15 مايو 2023</div>
+                            <h3>كيف يغير الذكاء الاصطناعي مستقبل الرعاية الصحية</h3>
+                            <p>استكشاف أحدث التطورات في استخدام الذكاء الاصطناعي للتشخيص الدقيق وتطوير الأدوية.</p>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="أخلاقيات الذكاء الاصطناعي">
+                        <div class="blog-content">
+                            <div class="blog-date">2 مايو 2023</div>
+                            <h3>التحديات الأخلاقية للذكاء الاصطناعي وكيفية معالجتها</h3>
+                            <p>مناقشة قضايا التحيز والخصوصية في أنظمة الذكاء الاصطناعي والحلول الممكنة.</p>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1677442135330-0c2e1cde5f11?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="مستقبل العمل مع الذكاء الاصطناعي">
+                        <div class="blog-content">
+                            <div class="blog-date">20 أبريل 2023</div>
+                            <h3>مستقبل العمل في عصر الذكاء الاصطناعي</h3>
+                            <p>كيف سيغير الذكاء الاصطناعي سوق العمل والمهارات المطلوبة للنجاح في المستقبل.</p>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الموقع</h3>
+                    <p>موقع تعليمي يهدف إلى تقديم نظرة متوازنة عن الذكاء الاصطناعي، مميزاته ومخاطره، معتمدًا على أحدث المصادر والدراسات الموثوقة.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#what-is-ai">ما هو الذكاء الاصطناعي</a></li>
+                        <li><a href="#benefits">المميزات</a></li>
+                        <li><a href="#risks">المخاطر</a></li>
+                        <li><a href="#ethics">الأخلاقيات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3><div class="footer-section">
+    <p>للاستفسارات أو المقترحات، يرجى التواصل معنا:</p>
+    <p>تيم AS</p>
+    <div class="social-links">
+        <a href="https://youtube.com/@alambrator_as?si=J1_jgejJUIgtIonS" target="_blank" title="قناتنا على يوتيوب">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://wa.me/201080482163" target="_blank" title="التواصل عبر واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1AP1MRpNKd/" target="_blank" title="صفحتنا على فيسبوك">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://alambrator100k.github.io/as/" target="_blank" title="السيرة الذاتية">
+            <i class="fas fa-user-tie"></i>
+        </a>
+    </div>
+</div>
+            <div class="copyright">
+                <p>© 2025 موقع الذكاء الاصطناعي - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود جافا سكريبت للتنقل السلس وللقائمة المتحركة
+        document.addEventListener('DOMContentLoaded', function() {
+            // التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // إغلاق القائمة المتنقلة إذا كانت مفتوحة
+                        document.querySelector('.nav-links').classList.remove('active');
+                    }
+                });
+            });
+            
+            // القائمة المتنقلة للشاشات الصغيرة
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-links') && !e.target.closest('.menu-toggle')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+            
+            // إضافة تأثير التمرير للشريط العلوي
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'var(--primary)';
+                    header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                } else {
+                    header.style.backgroundColor = '';
+                    header.style.boxShadow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
