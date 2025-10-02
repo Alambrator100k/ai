@@ -455,6 +455,37 @@
                 flex-direction: column;
             }
         }
+        
+        /* تنسيقات إضافية للصورة الجديدة */
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-caption {
+            margin-top: 1rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .warning-icon {
+            color: var(--accent2);
+            margin-left: 5px;
+        }
+        
+        .conclusion-box {
+            background-color: #f8f9fa;
+            border-right: 5px solid var(--accent1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -675,6 +706,32 @@
                             <a href="https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them" class="source" target="_blank">The Guardian: مقالات عن مخاطر فيديوهات "الديب فيك"</a>
                         </div>
                     </div>
+                    <!-- البطاقة الجديدة لمخاطر نشر الصور الشخصية -->
+                    <div class="card risk-card">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>مخاطر نشر الصور الشخصية وتعديلها بالذكاء الاصطناعي <i class="fas fa-exclamation-triangle warning-icon"></i></h3>
+                            <p>عند رفع صورك الشخصية وتعديلها بالذكاء الاصطناعي، قد تتعرض لمخاطر كبيرة:</p>
+                            <ul style="margin-top: 1rem; padding-right: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;"><strong>فقدان الخصوصية:</strong> صورك قد تُخزَّن أو تُستخدم دون علمك أو إذنك.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>انتحال الهوية:</strong> يمكن استغلال صورك لانتحال شخصيتك أو تزييف هويتك.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>تسريب البيانات:</strong> احتمالية وصول صورك لمواقع أو أشخاص غير موثوقين.</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>الاحتيال:</strong> استخدام صورك في النصب أو الخداع أو التلاعب.</li>
+                            </ul>
+                            
+                            <div class="image-container">
+                                <img src="ai.jpg" alt="مخاطر تعديل الصور الشخصية بالذكاء الاصطناعي">
+                                <div class="image-caption">توضيح لمخاطر تعديل الصور الشخصية بالذكاء الاصطناعي</div>
+                            </div>
+                            
+                            <div class="conclusion-box">
+                                <h4>الخلاصة:</h4>
+                                <p>عندما ترفع صورك الشخصية وتطلب تعديلها بالذكاء الاصطناعي، قد تفقد السيطرة عليها تمامًا وتصبح عرضة لمخاطر كثيرة.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -823,24 +880,25 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>اتصل بنا</h3><div class="footer-section">
-    <p>للاستفسارات أو المقترحات، يرجى التواصل معنا:</p>
-    <p>تيم AS</p>
-    <div class="social-links">
-        <a href="https://youtube.com/@alambrator_as?si=J1_jgejJUIgtIonS" target="_blank" title="قناتنا على يوتيوب">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://wa.me/201080482163" target="_blank" title="التواصل عبر واتساب">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1AP1MRpNKd/" target="_blank" title="صفحتنا على فيسبوك">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://alambrator100k.github.io/as/" target="_blank" title="السيرة الذاتية">
-            <i class="fas fa-user-tie"></i>
-        </a>
-    </div>
-</div>
+                    <h3>اتصل بنا</h3>
+                    <p>للاستفسارات أو المقترحات، يرجى التواصل معنا:</p>
+                    <p>تيم AS</p>
+                    <div class="social-links">
+                        <a href="https://youtube.com/@alambrator_as?si=J1_jgejJUIgtIonS" target="_blank" title="قناتنا على يوتيوب">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/201080482163" target="_blank" title="التواصل عبر واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1AP1MRpNKd/" target="_blank" title="صفحتنا على فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://alambrator100k.github.io/as/" target="_blank" title="السيرة الذاتية">
+                            <i class="fas fa-user-tie"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="copyright">
                 <p>© 2025 موقع الذكاء الاصطناعي - جميع الحقوق محفوظة</p>
             </div>
@@ -902,4 +960,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
