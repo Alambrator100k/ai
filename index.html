@@ -486,6 +486,169 @@
             border-radius: 8px;
             margin-top: 1.5rem;
         }
+        
+        /* تنسيقات زر تحليل الصور والنافذة */
+        .image-analysis-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .analysis-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            margin: 1rem;
+        }
+        
+        .analysis-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .analysis-description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        
+        /* نافذة منبثقة 3D */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .popup-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transform: perspective(1000px) rotateX(5deg) scale(0.9);
+            transition: transform 0.5s;
+            position: relative;
+        }
+        
+        .popup-overlay.active .popup-container {
+            transform: perspective(1000px) rotateX(0) scale(1);
+        }
+        
+        .popup-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .popup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .popup-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .popup-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .popup-content {
+            height: calc(100% - 80px);
+            padding: 0;
+        }
+        
+        .popup-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* خيارات العرض */
+        .view-options {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .view-option {
+            background: white;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+        
+        .view-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .view-option.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .option-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .view-option.active .option-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body>
@@ -542,6 +705,30 @@
                 </div>
             </div>
         </div>
+
+        <!-- قسم تحليل الصور -->
+        <section class="image-analysis-section">
+            <div class="container">
+                <h2 class="section-title">كشف المحتوى المُنتج بالذكاء الاصطناعي</h2>
+                <p class="analysis-description">تحليل الصور: الكشف إن كانت تم صنعها بالذكاء الاصطناعي أم لا</p>
+                <button class="analysis-btn" id="openAnalysis">
+                    <i class="fas fa-camera"></i> تحليل الصور
+                </button>
+                
+                <div class="view-options">
+                    <div class="view-option active" data-view="popup">
+                        <div class="option-icon">1️⃣</div>
+                        <div class="option-title">نافذة منبثقة (Popup 3D)</div>
+                        <div class="option-description">تطفو فوق المحتوى مع تأثير ضبابي بالخلفية</div>
+                    </div>
+                    <div class="view-option" data-view="newWindow">
+                        <div class="option-icon">2️⃣</div>
+                        <div class="option-title">فتح نافذة جديدة</div>
+                        <div class="option-description">فتح أداة التحليل في نافذة متصفح جديدة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- مقدمة عن الذكاء الاصطناعي -->
         <section id="what-is-ai" class="section">
@@ -861,6 +1048,21 @@
         </section>
     </main>
 
+    <!-- نافذة تحليل الصور المنبثقة -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-container">
+            <div class="popup-header">
+                <div class="popup-title">تحليل الصور - كشف المحتوى المُنتج بالذكاء الاصطناعي</div>
+                <button class="popup-close" id="popupClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-content">
+                <iframe src="https://hivemoderation.com/ai-generated-content-detection" class="popup-iframe" id="popupIframe"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- التذييل -->
     <footer>
         <div class="container">
@@ -956,6 +1158,50 @@
                     header.style.backgroundColor = '';
                     header.style.boxShadow = '';
                 }
+            });
+            
+            // كود خاص لتحليل الصور
+            const openAnalysisBtn = document.getElementById('openAnalysis');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupClose = document.getElementById('popupClose');
+            const viewOptions = document.querySelectorAll('.view-option');
+            let currentView = 'popup'; // العرض الافتراضي
+            
+            // فتح أداة تحليل الصور بناءً على خيار العرض المحدد
+            openAnalysisBtn.addEventListener('click', function() {
+                if (currentView === 'popup') {
+                    popupOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+                } else if (currentView === 'newWindow') {
+                    // فتح نافذة جديدة
+                    window.open('https://hivemoderation.com/ai-generated-content-detection', '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+                }
+            });
+            
+            // إغلاق النافذة المنبثقة
+            popupClose.addEventListener('click', function() {
+                popupOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // إعادة التمرير
+            });
+            
+            // إغلاق النافذة المنبثقة بالنقر خارجها
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    popupOverlay.classList.remove('active');
+                    document.body.style.overflow = ''; // إعادة التمرير
+                }
+            });
+            
+            // تغيير خيار العرض
+            viewOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الخيارات
+                    viewOptions.forEach(opt => opt.classList.remove('active'));
+                    // إضافة النشاط للخيار المحدد
+                    this.classList.add('active');
+                    // تحديث العرض الحالي
+                    currentView = this.getAttribute('data-view');
+                });
             });
         });
     </script>
